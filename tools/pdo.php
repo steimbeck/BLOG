@@ -31,7 +31,7 @@ class SPDO
      *
      * @var string
      */
-    const DEFAULT_SQL_HOST = 'mysql:host=localhost';
+    const DEFAULT_SQL_HOST = 'localhost';
 
     /**
      * Constante: hôte de la bdd
@@ -90,7 +90,9 @@ class SPDO
     {
         return $this->PDOInstance->query($query);
 
-        SPDO::getInstance()->query('Select * FROM ticket ORDER BY id DESC');
+        $req = SPDO::getInstance()->query('Select * FROM ticket ORDER BY id DESC');
+        
+        
     }
 
 }
