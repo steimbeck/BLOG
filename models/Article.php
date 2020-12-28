@@ -1,5 +1,5 @@
 <?php 
-include_once('./tools/pdo.php');
+include_once('tools/pdo.php');
 
 class Article {
 
@@ -20,9 +20,9 @@ class Article {
 class ArticleManager {
     function list() {
         return [
-            new Article(1, "Article 1 contenu", "Titre art 1", new DateTime()),
-            new Article(2, "Article 2 contenu", "Titre art 2", new DateTime()),
-            new Article(3, "Article 3 contenu", "Titre art 3", new DateTime()),
+           new Article(1, "Article 1 contenu", "Titre art 1", new DateTime()),
+         new Article(2, "Article 2 contenu", "Titre art 2", new DateTime()),
+          new Article(3, "Article 3 contenu", "Titre art 3", new DateTime()),
         ];
     }
     function create() {}

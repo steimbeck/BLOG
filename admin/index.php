@@ -1,5 +1,5 @@
 <?php
-include_once('../controllers/article.php');
+include_once('controllers/article.php');
 
 $router = [
     "article-list" => listArticles,
