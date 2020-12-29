@@ -23,14 +23,15 @@ class ArticleManager {
          //  new Article(1, "Article 1 contenu", "Titre art 1", new DateTime()),
          //new Article(2, "Article 2 contenu", "Titre art 2", new DateTime()),
          // new Article(3, "Article 3 contenu", "Titre art 3", new DateTime()),
+          $req = SPDO::getInstance()->query('Select * FROM ticket ORDER BY id DESC');
+         while ($row = $req->fetch()){
+
+         $var[] =$row;
          
-       
-         $req = SPDO::getInstance()->query('Select * FROM ticket ORDER BY id DESC');
-        $data = $req->fetchAll();
-        var_dump($data);
-        return $data;
+         }
+         $req->closeCursor();
+        return $var;
         
-         
     }
     function create() {}
     function update() {}

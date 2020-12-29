@@ -13,7 +13,7 @@ function saveNewArticle() {
 function detailArticle() {
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int)$_GET['id']);
-    include_once('./views/detail-article.php');
+    include_once('views/detail-article.php');
     
 }
 
@@ -21,7 +21,9 @@ function listArticles() {
     $articleManager = new ArticleManager();
     $articles = $articleManager->list();
     include_once('views/list-articles.php');
-    var_dump($articles);
+    
+    
+    
 
 }
 
