@@ -33,19 +33,27 @@ class ArticleManager {
         return $var;
         
     }
-    function create() {}
+    function create($id, $article) 
+    {
+            $infos = SPDO::getInstance();
+            $req =$infos->prepare("INSERT INTO ticket (title, content, date)VALUES(?, ?, NOW())");
+            $req->execute(array($_POST['title_Article'], $_POST['content_Article']));
+            $req->closeCursor();
+
+    }
     function update() {}
     function get($id) {
+        $infos = SPDO::getInstance();
+
         
-        
-        $req= ->prepare("SELECT id, title, content, DATE_FORMAT(date,'%d/%m/%y à %Hh%min%ss') AS date FROM ticket WHERE id = ?");
+        $req= $infos->prepare("SELECT id, title, content, DATE_FORMAT(date,'%d/%m/%y à %Hh%min%ss') AS date FROM ticket WHERE id = ?");
 
        $req->execute(array($id));
        
        while ($data =$req->fetch())
         {
         
-            $var [] = $data;
+            $var = $data;
         }
 
        $req->closeCursor();

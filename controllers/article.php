@@ -3,7 +3,9 @@
 include_once('models/article.php');
 
 function addArticle() {
-    echo "IMPLEMENT ME";
+    $articleManager = new ArticleManager();
+    $newArticle =$articleManager->create((int)$_GET['id'], $_GET['article']);
+    include_once('views/create-article.php');
 }
 
 function saveNewArticle() {
@@ -22,7 +24,7 @@ function detailArticle() {
 function listArticles() {
     $articleManager = new ArticleManager();
     $articles = $articleManager->list();
-    var_dump($articles);
+    
     include_once('views/list-articles.php');
     
     
