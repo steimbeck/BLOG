@@ -1,4 +1,5 @@
+
 <div>
-    <span><?= $article->title;?></span>
-    <p><?= $article->content; ?></p>
+    <span><?= $article['title'] ?></span>
+    <p><?= $article->content['$id']?> </p>
 </div>

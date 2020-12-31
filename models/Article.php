@@ -6,13 +6,13 @@ class Article {
     public $content;
     public $id;
     public $title;
-    public $creationDate;
+    public $date;
 
-    function __construct($id, $content, $title, $creationDate) {
+    function __construct($id, $content, $title, $date) {
         $this->id = $id;
         $this->content = $content;
         $this->title = $title;
-        $this->creationDate = $creationDate;
+        $this->date = $date;
     }
 
 }
@@ -36,7 +36,22 @@ class ArticleManager {
     function create() {}
     function update() {}
     function get($id) {
-        return new Article(3, "Article 3 contenu", "Titre art 3", new DateTime());
+        
+        
+        $req= ->prepare("SELECT id, title, content, DATE_FORMAT(date,'%d/%m/%y à %Hh%min%ss') AS date FROM ticket WHERE id = ?");
+
+       $req->execute(array($id));
+       
+       while ($data =$req->fetch())
+        {
+        
+            $var [] = $data;
+        }
+
+       $req->closeCursor();
+       return $var;
+       
+       //return new Article(3, "Article 3 contenu", "Titre art 3", new DateTime());
     }
     function delete() {}
 }

@@ -57,8 +57,12 @@ class SPDO
      */
     private function __construct()
     {
-        $this->PDOInstance = new PDO('mysql:dbname=' . self::DEFAULT_SQL_DTB . ';host=' . self::DEFAULT_SQL_HOST,
-        self::DEFAULT_SQL_USER, self::DEFAULT_SQL_PASS,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $this->PDOInstance = new PDO(
+            'mysql:dbname=' . self::DEFAULT_SQL_DTB . ';host=' . self::DEFAULT_SQL_HOST,
+            self::DEFAULT_SQL_USER,
+            self::DEFAULT_SQL_PASS,
+            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+        );
     }
 
     /**
@@ -69,16 +73,14 @@ class SPDO
      * @param void
      * @return SPDO $instance
      */
-    
+
     public static function getInstance()
     {
         if (is_null(self::$instance)) {
-            self::$instance = new SPDO();
-          
 
+            self::$instance = new SPDO();
         }
         return self::$instance;
-         
     }
 
     /**
@@ -90,10 +92,5 @@ class SPDO
     public function query($query)
     {
         return $this->PDOInstance->query($query);
-
-        $req = SPDO::getInstance()->query('Select * FROM ticket ORDER BY id DESC');
-        
-        
     }
-
 }

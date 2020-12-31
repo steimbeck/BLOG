@@ -13,13 +13,16 @@ function saveNewArticle() {
 function detailArticle() {
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int)$_GET['id']);
+    
     include_once('views/detail-article.php');
+    
     
 }
 
 function listArticles() {
     $articleManager = new ArticleManager();
     $articles = $articleManager->list();
+    var_dump($articles);
     include_once('views/list-articles.php');
     
     
