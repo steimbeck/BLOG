@@ -3,23 +3,22 @@
 
 
     <h3> Création d'un nouvelle article</h3><br />
-    <form method="post" action="post&status=news">
+    <form method ="post" action="">
         <div class="form-group">
-            <label for="title_Article"></label>
-            <input class="form-control" type="text" placeholder="Titre" name="title_Article"><br />
+            <label for="article_title"></label>
+            <input class="form-control" type="text" placeholder="Titre" name="article_title"><br />
         </div><br />
         <div class="form-group">
             <textarea placeholder="Contenu de l'article" class="form-control col -md-6"
-                name="content_Article"></textarea><br />
-            <span class="invalid">
-
-            </span>
+                name="article_content"></textarea><br />
+            
             <button class="btn btn-primary" type="submit" name="submit_Add">Envoyer l'article</button><br />
         </div>
     </form>
     <br />
     <?php
-    if (isset($message)) {
+    if (isset($message)) 
+    {
         echo $message;
     }
     ?>

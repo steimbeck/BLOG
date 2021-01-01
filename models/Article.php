@@ -35,9 +35,10 @@ class ArticleManager {
     }
     function create($id, $article) 
     {
+
             $infos = SPDO::getInstance();
             $req =$infos->prepare("INSERT INTO ticket (title, content, date)VALUES(?, ?, NOW())");
-            $req->execute(array($_POST['title_Article'], $_POST['content_Article']));
+            $req->execute(array($_POST['article_title'], $_POST['article_content']));
             $req->closeCursor();
 
     }
@@ -59,7 +60,7 @@ class ArticleManager {
        $req->closeCursor();
        return $var;
        
-       //return new Article(3, "Article 3 contenu", "Titre art 3", new DateTime());
+       
     }
     function delete() {}
 }

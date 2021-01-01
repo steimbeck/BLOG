@@ -1,45 +1,56 @@
 <?php
 
-include_once('models/article.php');
+include_once 'models/article.php';
 
-function addArticle() {
-    $articleManager = new ArticleManager();
-    $newArticle =$articleManager->create((int)$_GET['id'], $_GET['article']);
-    include_once('views/create-article.php');
+function addArticle()
+{
+    if (isset($_POST['article_title'], $_POST['article_content']))
+     {
+        $article_title = htmlspecialchars($_POST['article_title']);
+        $article_content = htmlspecialchars($_POST['article_content']);
+        $articleManager = new ArticleManager();
+        $article = $articleManager->create((int) $_GET['id'], $_GET['article']);
+    
+        include_once 'views/create-article.php';
+   
+        $message = 'Votre article a bien été enregistré';
+    } else {
+        $message = 'veuillez remplir tous les champs';
+    }
 }
 
-function saveNewArticle() {
+function saveNewArticle()
+{
     echo "IMPLEMENT ME";
 }
 
-function detailArticle() {
+function detailArticle()
+{
     $articleManager = new ArticleManager();
-    $article = $articleManager->get((int)$_GET['id']);
-    
-    include_once('views/detail-article.php');
-    
-    
+    $article = $articleManager->get((int) $_GET['id']);
+
+    include_once 'views/detail-article.php';
 }
 
-function listArticles() {
+function listArticles()
+{
     $articleManager = new ArticleManager();
     $articles = $articleManager->list();
-    
-    include_once('views/list-articles.php');
-    
-    
-    
 
+    include_once 'views/list-articles.php';
 }
 
-function updateArticle() {
+function updateArticle()
+{
     echo "IMPLEMENT ME";
 }
 
-function saveUpdateArticle() {
+function saveUpdateArticle()
+{
     echo "IMPLEMENT ME";
 }
 
-function deleteArticle() {
+function deleteArticle()
+{
     echo "IMPLEMENT ME";
 }
