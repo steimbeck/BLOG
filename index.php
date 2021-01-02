@@ -5,14 +5,17 @@ $router =
 [
     "article-list" => listArticles,
     "article-detail" => detailArticle,
-    "article-new" => addArticle,
+    "article-new" => addArticle
+    
 ];
+
 
 $controller = $_GET['controller'];
 
 if (!$controller) 
 {
     $controller = 'article-list';
+    
    
 }
 

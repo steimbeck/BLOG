@@ -4,19 +4,14 @@ include_once 'models/article.php';
 
 function addArticle()
 {
-    if (isset($_POST['article_title'], $_POST['article_content']))
-     {
-        $article_title = htmlspecialchars($_POST['article_title']);
-        $article_content = htmlspecialchars($_POST['article_content']);
-        $articleManager = new ArticleManager();
-        $article = $articleManager->create((int) $_GET['id'], $_GET['article']);
     
+        $articleManager = new ArticleManager();
+        $article = $articleManager->create('$id');
+        echo'kglkrg!hng!lhg!hgihjgihjg!hi!';
+
         include_once 'views/create-article.php';
    
-        $message = 'Votre article a bien été enregistré';
-    } else {
-        $message = 'veuillez remplir tous les champs';
-    }
+ 
 }
 
 function saveNewArticle()

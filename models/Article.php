@@ -33,14 +33,23 @@ class ArticleManager {
         return $var;
         
     }
-    function create($id, $article) 
+    function create($id) 
     {
-
+if (isset($_POST['article_title'], $_POST['article_content']))
+ {
+ $article_title = htmlspecialchars($_POST['article_title']);
+ $article_content = htmlspecialchars($_POST['article_content']);
             $infos = SPDO::getInstance();
             $req =$infos->prepare("INSERT INTO ticket (title, content, date)VALUES(?, ?, NOW())");
-            $req->execute(array($_POST['article_title'], $_POST['article_content']));
+            $req->execute(array($_POST['article-title'], $_POST['article_content']));
             $req->closeCursor();
-
+          $message = 'Votre article a bien été enregistré';
+           } else {
+           $message = 'veuillez remplir tous les champs';
+           }
+            
+             
+         
     }
     function update() {}
     function get($id) {
