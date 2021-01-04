@@ -5,8 +5,10 @@ $router =
 [
     "article-list" => listArticles,
     "article-detail" => detailArticle,
-    "article-new" => addArticle
-    
+    "article-add" => addArticle,
+    "article-del"=> deleteArticle,
+    "article-update"=> updateArticle,
+    "article-comment"=>addComment
 ];
 
 

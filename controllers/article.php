@@ -9,10 +9,21 @@ function addArticle()
         $article = $articleManager->create('$id');
         echo'kglkrg!hng!lhg!hgihjgihjg!hi!';
 
-        include_once 'views/create-article.php';
+        include_once 'views/addArticleForm.php';
    
  
 }
+function addComment($author, $content, $article){
+
+ $articleManager = new ArticleManager();
+ $article = $articleManager->get((int) $_GET['id']);
+$articleManager = new ArticleManager();
+ $article = $articleManager->comment($author, $content, $article);
+ include_once 'views/detail-article.php';
+
+     
+}
+ 
 
 function saveNewArticle()
 {
@@ -37,7 +48,14 @@ function listArticles()
 
 function updateArticle()
 {
-    echo "IMPLEMENT ME";
+    $id = $_GET['id'];
+    $title = $_GET['title'];
+    $content = $_GET['content'];
+    $articleManager = new ArticleManager();
+    $article = $articleManager->get((int) $_GET['id']);
+    $articleManager =new ArticleManager();
+    $article= $articleManager->update($id, $title, $content);
+    include_once 'views/updateArticleForm.php';
 }
 
 function saveUpdateArticle()
@@ -47,5 +65,11 @@ function saveUpdateArticle()
 
 function deleteArticle()
 {
-    echo "IMPLEMENT ME";
+    $id = $_GET['id'];
+    $articleManager = new ArticleManager();
+    $article = $articleManager->get((int) $_GET['id']);
+    $articleManager = new ArticleManager();
+    $article = $articleManager->delete($id);
+
+    include_once 'views/list-articles.php';
 }

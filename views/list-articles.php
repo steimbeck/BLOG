@@ -16,7 +16,7 @@
                     <a class="nav-item nav-link active" href="">Connexion Administrateur <span
                             class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="index.php">Retour aux articles</a>
-                    <a class="nav-item nav-link" href="?controller=article-new">Créer un article</a>
+                    <a class="nav-item nav-link" href="?controller=article-add">Créer un article</a>
                 </div>
         </div>
 
@@ -44,13 +44,11 @@ foreach($articles as $article):?>
 
                 <article><?=$article['content'] ?></article><br>
                 <a class="btn btn-blog pull-right marginBottom10 btn btn-info" role="button"
-                    href="?controller=edit&id=<?=$article['id']?>">Modifier</a>
+                    href="?controller=article-update&id=<?=$article['id']?>">Modifier</a>
 
                 <a class="btn btn-blog pull-right marginBottom10"
-                    href="?controller=delete&id=<?=$article['id']?>">Supprimer</a>
+                    href="?controller=article-del&id=<?=$article['id']?>">Supprimer</a>
                 <hr />
 
             </div>
-
-
-            <?php endforeach ?>
+<?php endforeach ?>

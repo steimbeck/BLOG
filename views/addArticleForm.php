@@ -3,7 +3,7 @@
 
 
     <h3> Création d'un nouvelle article</h3><br />
-    <form method ="post" action="">
+    <form method ="post" action=" ">
         <div class="form-group">
             <label for="article_title"></label>
             <input class="form-control" type="text" placeholder="Titre" name="article_title"><br />
