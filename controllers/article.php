@@ -12,17 +12,28 @@ function addArticle()
    
  
 }
-function addComment($author, $content, $article){
+function addComment($author, $content, $article)
+ {
+   if (isset($_POST['submit_comment'])) {
 
- $articleManager = new ArticleManager();
- $article = $articleManager->get((int) $_GET['id']);
+    if (isset($_POST['pseudo'], $_POST['message']) and !empty($_POST['pseudo']) and !empty($_POST['message'])) {
+    $author = strip_tags($_POST['pseudo']);
+    $comment = strip_tags($_POST['message']);
+    $article->id();
+var_dump($_POST);
+$articleManager = new ArticleManager();
+ $article = $articleManager->create ($_POST['pseudo'], $_POST['message']);
 $articleManager = new ArticleManager();
  $article = $articleManager->comment($author, $content, $article);
  include_once 'views/detail-article.php';
+ echo 'Votre message a bien été ajouté';
+    }else{
 
+          echo "Tous les champs doivent etre complétés";
+        }
      
 }
- 
+  }
 
 function saveNewArticle()
 {
@@ -30,16 +41,17 @@ function saveNewArticle()
    if (isset($_POST['article_title'], $_POST['article_content']) && !empty($_POST['article_title']) && !empty($_POST['article_content'])) {
       $article_title = htmlspecialchars($_POST['article_title']);
       $article_content = htmlspecialchars($_POST['article_content']);
-    
      $articleManager = new ArticleManager();
      $article = $articleManager->create ($_POST['article_title'], $_POST['article_content']);
-  echo ' Tous les champs ont été  remplis ';
+  echo 'Tous les champs ont été  remplis';
 }else{
 
-echo' Vous devez remplir tous les champs';
+echo  'Vous devez remplir tous les champs';
 }
       
 }
+
+
 
 function detailArticle()
 {
@@ -59,20 +71,19 @@ function listArticles()
 
 function updateArticle()
 {
-   
+   $articleManager = new ArticleManager();
+   $article = $articleManager->get((int) $_GET['id']);
     include_once 'views/updateArticleForm.php';
 }
 
 function saveUpdateArticle()
 {
-    
+    $id = $_GET['id'];
     $title = $_POST['title'];
     $content = $_POST['content'];
-    $articleManager = new ArticleManager();
-    $article = $articleManager->get((int) $_GET['id']);
     $articleManager =new ArticleManager();
-    $article= $articleManager->update( $title, $content);
-    var_dump($_POST);
+    $article= $articleManager->update($id,  $title, $content);
+    
     
 }
 
@@ -84,6 +95,6 @@ function deleteArticle()
     $articleManager = new ArticleManager();
     $article = $articleManager->delete($id);
 
-  // header('location :views/list-articles.php');
+  //header('location :index.php');
    
 }

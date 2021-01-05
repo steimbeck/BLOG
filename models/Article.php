@@ -44,13 +44,12 @@ class ArticleManager
         
 
     }
-    public function update( $title, $content)
+    public function update($id, $title, $content)
     {
 
         $infos = SPDO::getInstance();
-        //$id = $_GET['id'];
         $req = $infos->prepare('UPDATE ticket SET title= ?, content=? WHERE id = ?');
-        $req->execute(array(  $title, $content));
+        $req->execute(array( $title, $content, $id));
         $req->closeCursor();
 
     }
@@ -73,7 +72,8 @@ class ArticleManager
 
     }
     public function Comment($author, $comment, $ticketid)
-    {
+    {   
+        $id = $_GET['id'];
         $infos = SPDO::getInstance();
         $req= $infos->prepare('INSERT INTO comments(author, comment, ticketid, comdate )VALUES(?, ?, ?, NOW())');
         $req->execute(array($author, $comment, $ticketid));
