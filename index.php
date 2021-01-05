@@ -8,7 +8,9 @@ $router =
     "article-add" => addArticle,
     "article-del"=> deleteArticle,
     "article-update"=> updateArticle,
-    "article-comment"=>addComment
+    "article-saveUpt"=>saveUpdateArticle,
+    "article-comment"=>addComment,
+    "article-save"=>saveNewArticle
 ];
 
 

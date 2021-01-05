@@ -33,29 +33,24 @@ class ArticleManager
         return $var;
 
     }
-    public function create($id)
+    public function create($title, $content)
     {
-        if (isset($_POST['article_title'], $_POST['article_content']) && !empty($_POST['article_title']) && !empty($_POST['article_content'])) {
-            $article_title = htmlspecialchars($_POST['article_title']);
-            $article_content = htmlspecialchars($_POST['article_content']);
-            $id = $_GET['id'];
             $infos = SPDO::getInstance();
             $req = $infos->prepare("INSERT INTO ticket (title, content, date)VALUES(?, ?, NOW())");
-            $req->execute(array($_POST['article-title'], $_POST['article_content']));
+            $req->execute(array($title, $content));
             $req->closeCursor();
-            $message = 'Votre article a bien été enregistré';
-        } else {
-            $message = 'veuillez remplir tous les champs';
-        }
+           
+        
+        
 
     }
-    public function update($id, $title, $content)
+    public function update( $title, $content)
     {
 
         $infos = SPDO::getInstance();
-        $id = $_GET['id'];
-        $req = $infos->prepare('UPDATE ticket SET title= ?, content=? WHERE id= ?');
-        $req->execute(array($id, $title, $content));
+        //$id = $_GET['id'];
+        $req = $infos->prepare('UPDATE ticket SET title= ?, content=? WHERE id = ?');
+        $req->execute(array(  $title, $content));
         $req->closeCursor();
 
     }

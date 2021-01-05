@@ -1,15 +1,14 @@
 <?php
-
 include_once 'models/article.php';
 
 function addArticle()
 {
     
-        $articleManager = new ArticleManager();
-        $article = $articleManager->create('$id');
-        echo'kglkrg!hng!lhg!hgihjgihjg!hi!';
+       
+     include_once 'views/addArticleForm.php';
+    
 
-        include_once 'views/addArticleForm.php';
+       
    
  
 }
@@ -27,7 +26,19 @@ $articleManager = new ArticleManager();
 
 function saveNewArticle()
 {
-    echo "IMPLEMENT ME";
+    
+   if (isset($_POST['article_title'], $_POST['article_content']) && !empty($_POST['article_title']) && !empty($_POST['article_content'])) {
+      $article_title = htmlspecialchars($_POST['article_title']);
+      $article_content = htmlspecialchars($_POST['article_content']);
+    
+     $articleManager = new ArticleManager();
+     $article = $articleManager->create ($_POST['article_title'], $_POST['article_content']);
+  echo ' Tous les champs ont été  remplis ';
+}else{
+
+echo' Vous devez remplir tous les champs';
+}
+      
 }
 
 function detailArticle()
@@ -48,19 +59,21 @@ function listArticles()
 
 function updateArticle()
 {
-    $id = $_GET['id'];
-    $title = $_GET['title'];
-    $content = $_GET['content'];
-    $articleManager = new ArticleManager();
-    $article = $articleManager->get((int) $_GET['id']);
-    $articleManager =new ArticleManager();
-    $article= $articleManager->update($id, $title, $content);
+   
     include_once 'views/updateArticleForm.php';
 }
 
 function saveUpdateArticle()
 {
-    echo "IMPLEMENT ME";
+    
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $articleManager = new ArticleManager();
+    $article = $articleManager->get((int) $_GET['id']);
+    $articleManager =new ArticleManager();
+    $article= $articleManager->update( $title, $content);
+    var_dump($_POST);
+    
 }
 
 function deleteArticle()
@@ -71,5 +84,6 @@ function deleteArticle()
     $articleManager = new ArticleManager();
     $article = $articleManager->delete($id);
 
-    include_once 'views/list-articles.php';
+  // header('location :views/list-articles.php');
+   
 }
