@@ -77,6 +77,9 @@ class ArticleManager
         $infos = SPDO::getInstance();
         $req= $infos->prepare('INSERT INTO comments( author, comment, ticketid, comdate )VALUES(?, ?, ?, NOW())');
         $req->execute(array( $author, $comment, $ticketid));
+       
+       
+
         $req->closeCursor();
        
     

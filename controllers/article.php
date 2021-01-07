@@ -10,23 +10,23 @@ function addComment()
 {
      //if (isset($_POST['submit_comment'])) {
 
-      //  if (isset($_POST['pseudo'], $_POST['message']) and !empty($_POST['pseudo']) and !empty($_POST['message'])) {
+       // if (isset($_POST['pseudo'], $_POST['message']) and !empty($_POST['pseudo']) and !empty($_POST['message'])) {
     $author = strip_tags($_POST['pseudo']);
     $content = strip_tags($_POST['message']);
     $articleid = $_GET['id'];
     var_dump($content);
     var_dump($author);
-    
+    var_dump($articleid);
 
     $commentManager = new ArticleManager();
     $article=$commentManager->comment($articleid, $author, $content);
     include_once 'views/detail-article.php';
 
-   //  echo 'Votre message a bien été ajouté';
-    //    } else {
+  //  echo 'Votre message a bien été ajouté';
+   //     } else {
 
-    //  echo "Tous les champs doivent etre complétés";
-    //  }
+   //   echo "Tous les champs doivent etre complétés";
+  //   }
 }
 //}
 

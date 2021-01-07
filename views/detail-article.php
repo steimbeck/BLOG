@@ -7,7 +7,7 @@
 
 <h3>Ajouter un commentaire</h3>
 
-<form class ="form-group" action="?controller=article-comment&id" method="post">
+<form class="form-group" action="?controller=article-comment&id=<?=$article['id']?> method=" post">
     <div class ="form-group">
         <label for ="pseudo" >Votre pseudo</label><br><br>
 <input type ="text" name ="pseudo" id ="pseudo" placeholder ="Votre pseudo">
