@@ -14,11 +14,16 @@ $router =
 ];
 
 
+
 $controller = $_GET['controller'];
+
 
 if (!$controller) 
 {
     $controller = 'article-list';
+    
+    
+    
     
    
 }

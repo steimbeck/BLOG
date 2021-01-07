@@ -71,18 +71,21 @@ class ArticleManager
         return $var;
 
     }
-    public function Comment($author, $comment, $ticketid)
+    public function comment($author, $comment, $ticketid)
     {   
-        $id = $_GET['id'];
+        
         $infos = SPDO::getInstance();
-        $req= $infos->prepare('INSERT INTO comments(author, comment, ticketid, comdate )VALUES(?, ?, ?, NOW())');
-        $req->execute(array($author, $comment, $ticketid));
+        $req= $infos->prepare('INSERT INTO comments( author, comment, ticketid, comdate )VALUES(?, ?, ?, NOW())');
+        $req->execute(array( $author, $comment, $ticketid));
         $req->closeCursor();
-
-
+       
+    
     }
 
-    public function delete($id)
+    
+    
+    
+public function delete($id)
     {   
         
         $infos = SPDO::getInstance();
