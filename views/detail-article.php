@@ -2,11 +2,23 @@
     <span><?=$article['title']?></span>
     <p><?=$article['content']?> </p>
 </div>
+<h2>Les commentaires de cet article</h2>
+<?php
+
+foreach($articles as $com):?>
+ <time><?=$com['comdate']?></time>
+<strong><?=$com['author']?></strong> : <?=$com['content']?><br>
+
+<?php endforeach ?>
+
+
+
+
 
 
 <h3>Ajouter un commentaire</h3>
 
-<form class="form-group" action="?controller=article-comment&id=<?=$article['id']?>" method=" post">
+<form class="form-group" action="?controller=article-comment&id=<?=$article['id']?>" method="post">
     <div class="form-group">
         <label for="pseudo">Votre pseudo</label><br><br>
         <input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo">
@@ -20,3 +32,8 @@
 
     <button type="submit" class="btn btn-info" name="submit_message">Envoyer votre commentaire</button><br />
 </form>
+<?php
+    if (isset($message)) {
+        echo $message;
+    }
+    ?>

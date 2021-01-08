@@ -8,9 +8,9 @@ function addArticle()
 }
 function addComment()
 {
-     //if (isset($_POST['submit_comment'])) {
+     
 
-       // if (isset($_POST['pseudo'], $_POST['message']) and !empty($_POST['pseudo']) and !empty($_POST['message'])) {
+    if (isset($_POST['pseudo'], $_POST['message']) && !empty($_POST['pseudo']) && !empty($_POST['message'])) {
     $author = strip_tags($_POST['pseudo']);
     $content = strip_tags($_POST['message']);
     $articleid = $_GET['id'];
@@ -19,16 +19,17 @@ function addComment()
     var_dump($articleid);
 
     $commentManager = new ArticleManager();
-    $article=$commentManager->comment($articleid, $author, $content);
+    $article = $commentManager->comment($author, $content, $articleid);
     include_once 'views/detail-article.php';
 
-  //  echo 'Votre message a bien été ajouté';
-   //     } else {
+  echo "Votre commentaire a bien été enregistré";
 
-   //   echo "Tous les champs doivent etre complétés";
-  //   }
+       } else {
+
+     echo "Vous devez remplir tous les champs";
+  }
+
 }
-//}
 
 function saveNewArticle()
 {
@@ -38,33 +39,41 @@ function saveNewArticle()
         $article_content = htmlspecialchars($_POST['article_content']);
         $articleManager = new ArticleManager();
         $article = $articleManager->create($_POST['article_title'], $_POST['article_content']);
-        echo 'Tous les champs ont été  remplis';
+
+     $message = 'Tous les champs ont été  remplis';
     } else {
 
-        echo 'Vous devez remplir tous les champs';
+     $message = 'Vous devez remplir tous les champs';
     }
 }
 
 function detailArticle()
 {
 
+    
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
+   
+   
 
     include_once 'views/detail-article.php';
 }
 
 function listArticles()
 {
-
+    $articleid= $_GET['id'];
     $articleManager = new ArticleManager();
     $articles = $articleManager->list();
+    $messageManager = new ArticleManager();
+    $articles =$messageManager->getComments($articleid);
+    
 
     include_once 'views/list-articles.php';
 }
 
 function updateArticle()
-{
+{    
+    
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
     include_once 'views/updateArticleForm.php';

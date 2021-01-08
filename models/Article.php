@@ -77,14 +77,28 @@ class ArticleManager
         $infos = SPDO::getInstance();
         $req= $infos->prepare('INSERT INTO comments( author, comment, ticketid, comdate )VALUES(?, ?, ?, NOW())');
         $req->execute(array( $author, $comment, $ticketid));
-       
-       
+        while ($data = $req->fetch()) 
+        {
+            $var =$data;
 
+        }
         $req->closeCursor();
        
     
     }
+       public function getComments ($id){
+        
+        $infos = SPDO::getInstance();
+        $id = $_GET['id'];
+        $req =$infos-> prepare('SELECT * FROM comments WHERE ticketid = ?');
+        $req->execute(array($id));
+        $news = $req->fetch();
+        $req->closeCursor();
 
+        
+        
+
+    }
     
     
     
