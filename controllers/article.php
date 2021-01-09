@@ -14,9 +14,7 @@ function addComment()
     $author = strip_tags($_POST['pseudo']);
     $content = strip_tags($_POST['message']);
     $articleid = $_GET['id'];
-    var_dump($content);
-    var_dump($author);
-    var_dump($articleid);
+   
 
     $commentManager = new ArticleManager();
     $article = $commentManager->comment($author, $content, $articleid);
@@ -50,22 +48,24 @@ function saveNewArticle()
 function detailArticle()
 {
 
-    
+    $id= $_POST['id'];
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
-   
-   
+    $messageManager = new ArticleManager();
+    $articles = $messageManager->getComments($id);
+    var_dump($articles);
+    var_dump($id);
 
     include_once 'views/detail-article.php';
 }
 
 function listArticles()
 {
-    $articleid= $_GET['id'];
+    
+    
     $articleManager = new ArticleManager();
     $articles = $articleManager->list();
-    $messageManager = new ArticleManager();
-    $articles =$messageManager->getComments($articleid);
+    
     
 
     include_once 'views/list-articles.php';

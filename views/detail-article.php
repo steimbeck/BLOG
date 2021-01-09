@@ -2,11 +2,12 @@
     <span><?=$article['title']?></span>
     <p><?=$article['content']?> </p>
 </div>
-<h2>Les commentaires de cet article</h2>
+<h2>Les commentaires de cet article :</h2>
 <?php
 
-foreach($articles as $com):?>
- <time><?=$com['comdate']?></time>
+
+ foreach ($articles as $com):?>
+<time><?=$com[$comd]?></time>
 <strong><?=$com['author']?></strong> : <?=$com['content']?><br>
 
 <?php endforeach ?>

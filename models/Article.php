@@ -68,6 +68,7 @@ class ArticleManager
         }
 
         $req->closeCursor();
+        
         return $var;
 
     }
@@ -77,27 +78,19 @@ class ArticleManager
         $infos = SPDO::getInstance();
         $req= $infos->prepare('INSERT INTO comments( author, comment, ticketid, comdate )VALUES(?, ?, ?, NOW())');
         $req->execute(array( $author, $comment, $ticketid));
-        while ($data = $req->fetch()) 
-        {
-            $var =$data;
-
-        }
         $req->closeCursor();
        
     
     }
-       public function getComments ($id){
-        
-        $infos = SPDO::getInstance();
+       public function getComments($id){
         $id = $_GET['id'];
-        $req =$infos-> prepare('SELECT * FROM comments WHERE ticketid = ?');
-        $req->execute(array($id));
-        $news = $req->fetch();
+        $infos = SPDO::getInstance();
+        $req =$infos-> prepare('SELECT * FROM comments WHERE comid = ?');
+        $message=  $req->execute(array($id));
+        $message= $req->fetchAll();
         $req->closeCursor();
-
-        
-        
-
+        return $req;
+    
     }
     
     
@@ -108,6 +101,7 @@ public function delete($id)
         $infos = SPDO::getInstance();
         $req = $infos->prepare('DELETE FROM TICKET WHERE id = ?');
         $req->execute(array($id));
+        
         $req->closeCursor();
 
     }
