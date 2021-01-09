@@ -85,11 +85,11 @@ class ArticleManager
        public function getComments($id){
         $id = $_GET['id'];
         $infos = SPDO::getInstance();
-        $req =$infos-> prepare('SELECT * FROM comments WHERE comid = ?');
-        $message=  $req->execute(array($id));
-        $message= $req->fetchAll();
+        $req =$infos-> prepare('SELECT * FROM comments WHERE ticketid = ?');
+        $req->execute(array($id));
+        $data = $req->fetchALL(PDO::FETCH_OBJ);
         $req->closeCursor();
-        return $req;
+        return $data;
     
     }
     

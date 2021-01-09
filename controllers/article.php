@@ -47,14 +47,13 @@ function saveNewArticle()
 
 function detailArticle()
 {
-
-    $id= $_POST['id'];
+ 
+    $id= $_GET['id'];
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
-    $messageManager = new ArticleManager();
-    $articles = $messageManager->getComments($id);
-    var_dump($articles);
-    var_dump($id);
+    $messagesManager = new ArticleManager();
+    $articles = $messagesManager->getComments($id);
+    
 
     include_once 'views/detail-article.php';
 }

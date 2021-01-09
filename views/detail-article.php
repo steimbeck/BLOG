@@ -6,9 +6,10 @@
 <?php
 
 
- foreach ($articles as $com):?>
-<time><?=$com[$comd]?></time>
-<strong><?=$com['author']?></strong> : <?=$com['content']?><br>
+
+foreach ($articles as $com):?>
+ <time>Article créer le <?=$com->comdate?></time><br><br>
+<strong><?=$com->author?></strong> : <?=$com->comment?><br><br>
 
 <?php endforeach ?>
 
