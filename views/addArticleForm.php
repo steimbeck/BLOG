@@ -1,8 +1,21 @@
-<div class="container"><br /><br><br>
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>BLOG</title>
+    </head>
+
+
+<div class="container" align ='center'><br /><br><br>
 
 
 
     <h3> Création d'un nouvelle article</h3><br />
+
     <form method="post" action="?controller=article-save&id">
         <div class="form-group">
             <label for="article_title"></label>
@@ -10,10 +23,11 @@
         </div><br>
         <div class="form-group col -md-6">
             <textarea placeholder="Contenu de l'article" class="form-control col -md-6"
-                name="article_content"></textarea><br>
+                name="article_content"></textarea><br><br>
 
             <button class="btn btn-primary" type="submit" name="submit_Add">Envoyer l'article</button><br />
         </div>
+    </div>
     </form>
     <br>
     

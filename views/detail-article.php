@@ -5,13 +5,14 @@
 <h2>Les commentaires de cet article :</h2>
 <?php
 
-
-
-foreach ($articles as $com):?>
+foreach ($articles as $com): ?>
  <time>Article créer le <?=$com->comdate?></time><br><br>
-<strong><?=$com->author?></strong> : <?=$com->comment?><br><br>
 
-<?php endforeach ?>
+<strong><?=$com->author?></strong> : <?=$com->comment?> - <a class="btn btn-blog pull-right marginBottom10"
+    role="button" href="?controller=article-report&id=<?=$article['id']?>">Signaler </a> - <a class="btn btn-blog pull-right marginBottom10" role="button"
+        href="?controller=article-delcomment&id=<?=$article['id']?>">Supprimer</a><br><br>
+
+<?php endforeach?>
 
 
 
@@ -35,7 +36,7 @@ foreach ($articles as $com):?>
     <button type="submit" class="btn btn-info" name="submit_message">Envoyer votre commentaire</button><br />
 </form>
 <?php
-    if (isset($message)) {
-        echo $message;
-    }
-    ?>
+if (isset($message)) {
+    echo $message;
+}
+?>

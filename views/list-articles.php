@@ -46,7 +46,7 @@ foreach($articles as $article):?>
                 <a class="btn btn-blog pull-right marginBottom10 btn btn-info" role="button"
                     href="?controller=article-update&id=<?=$article['id']?>">Modifier</a>
 
-                <a class="btn btn-blog pull-right marginBottom10"
+                <a class="btn btn-blog pull-right marginBottom10" role="button"
                     href="?controller=article-del&id=<?=$article['id']?>">Supprimer</a>
                 <hr />
 

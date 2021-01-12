@@ -92,6 +92,14 @@ class ArticleManager
         return $data;
     
     }
+    public function eraseComment($comid){
+
+         $infos = SPDO::getInstance();
+         $req = $infos->prepare('DELETE FROM comments WHERE comid = ?');
+         $req->execute(array($comid));
+
+         $req->closeCursor();
+    }
     
     
     

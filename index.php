@@ -5,13 +5,12 @@ $router =
 [
     "article-list" => listArticles,
     "article-detail" => detailArticle,
-    "article-add" => addArticle,
-    "article-del"=> deleteArticle,
-    "article-update"=> updateArticle,
-    "article-saveUpt"=>saveUpdateArticle,
     "article-comment"=>addComment,
-    "article-save"=>saveNewArticle
-];
+    "article-del"=> deleteArticle,
+    "article-delcomment"=>eraseComment,
+    "article-update"=> updateArticle,
+      "article-saveUpt"=>saveUpdateArticle,
+];  
 
 
 

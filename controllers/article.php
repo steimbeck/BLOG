@@ -6,13 +6,14 @@ function addArticle()
 
     include_once 'views/addArticleForm.php';
 }
+
 function addComment()
 {
      
 
     if (isset($_POST['pseudo'], $_POST['message']) && !empty($_POST['pseudo']) && !empty($_POST['message'])) {
-    $author = strip_tags($_POST['pseudo']);
-    $content = strip_tags($_POST['message']);
+    $author = htmlspecialchars($_POST['pseudo']);
+    $content = htmlspecialchars($_POST['message']);
     $articleid = $_GET['id'];
    
 
@@ -27,6 +28,29 @@ function addComment()
      echo "Vous devez remplir tous les champs";
   }
 
+}
+function reportComment(){
+  $id= $_GET['id'];
+  $title = $_POST['title'];
+  $content = $_POST['content'];
+ 
+  $articleManager = new ArticleManager();
+  $article = $articleManager->update($id, $title, $content);
+
+  $articleManager = new ArticleManager();
+$article = $articleManager->get((int) $_GET['id']);
+
+
+
+
+}
+
+function deleteComment(){
+    $id= $_GET['id'];
+    $articleManager = new ArticleManager();
+    $article = $articleManager->get((int) $_GET['id']);
+    $delmessage = new ArticleManager();
+    $delmessage ->eraseComment($id);
 }
 
 function saveNewArticle()

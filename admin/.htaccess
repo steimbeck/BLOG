@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Acces Reserve aux Admin"
+AuthUserFile "C:\wamp64\www\BLOG\admin\.htpasswd"
+Require valid-user
