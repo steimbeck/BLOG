@@ -9,48 +9,48 @@ function addArticle()
 
 function addComment()
 {
-     
 
     if (isset($_POST['pseudo'], $_POST['message']) && !empty($_POST['pseudo']) && !empty($_POST['message'])) {
-    $author = htmlspecialchars($_POST['pseudo']);
-    $content = htmlspecialchars($_POST['message']);
-    $articleid = $_GET['id'];
-   
+        $author = htmlspecialchars($_POST['pseudo']);
+        $content = htmlspecialchars($_POST['message']);
+        $articleid = $_GET['id'];
 
-    $commentManager = new ArticleManager();
-    $article = $commentManager->comment($author, $content, $articleid);
-    include_once 'views/detail-article.php';
+        $commentManager = new ArticleManager();
+        $article = $commentManager->comment($author, $content, $articleid);
+        include_once 'views/detail-article.php';
 
-  echo "Votre commentaire a bien été enregistré";
+        echo "Votre commentaire a bien été enregistré";
 
-       } else {
+    } else {
 
-     echo "Vous devez remplir tous les champs";
-  }
-
-}
-function reportComment(){
-  $id= $_GET['id'];
-  $title = $_POST['title'];
-  $content = $_POST['content'];
- 
-  $articleManager = new ArticleManager();
-  $article = $articleManager->update($id, $title, $content);
-
-  $articleManager = new ArticleManager();
-$article = $articleManager->get((int) $_GET['id']);
-
-
-
+        echo "Vous devez remplir tous les champs";
+    }
 
 }
+function reportComment()
+{
+    $id = $_GET['id'];
+    $title = $_POST['title'];
+    $content = $_POST['content'];
 
-function deleteComment(){
-    $id= $_GET['id'];
+    $articleManager = new ArticleManager();
+    $article = $articleManager->update($id, $title, $content);
+
+    $articleManager = new ArticleManager();
+    $article = $articleManager->get((int) $_GET['id']);
+
+    
+
+}
+
+function deleteComment()
+{
+    $id = $_GET['id'];
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
     $delmessage = new ArticleManager();
-    $delmessage ->eraseComment($id);
+     $delmessage->eraseComment($id);
+    
 }
 
 function saveNewArticle()
@@ -62,41 +62,37 @@ function saveNewArticle()
         $articleManager = new ArticleManager();
         $article = $articleManager->create($_POST['article_title'], $_POST['article_content']);
 
-     $message = 'Tous les champs ont été  remplis';
+        $message = 'Tous les champs ont été  remplis';
     } else {
 
-     $message = 'Vous devez remplir tous les champs';
+        $message = 'Vous devez remplir tous les champs';
     }
 }
 
 function detailArticle()
 {
- 
-    $id= $_GET['id'];
+
+    $id = $_GET['id'];
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
     $messagesManager = new ArticleManager();
     $articles = $messagesManager->getComments($id);
-    
 
     include_once 'views/detail-article.php';
 }
 
 function listArticles()
 {
-    
-    
+
     $articleManager = new ArticleManager();
     $articles = $articleManager->list();
-    
-    
 
     include_once 'views/list-articles.php';
 }
 
 function updateArticle()
-{    
-    
+{
+
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
     include_once 'views/updateArticleForm.php';

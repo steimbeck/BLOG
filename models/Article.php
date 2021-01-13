@@ -46,7 +46,7 @@ class ArticleManager
     }
     public function update($id, $title, $content)
     {
-
+        
         $infos = SPDO::getInstance();
         $req = $infos->prepare('UPDATE ticket SET title= ?, content=? WHERE id = ?');
         $req->execute(array( $title, $content, $id));
@@ -92,12 +92,11 @@ class ArticleManager
         return $data;
     
     }
-    public function eraseComment($comid){
-
-         $infos = SPDO::getInstance();
+    public function eraseComment($id){
+         
+        $infos = SPDO::getInstance();
          $req = $infos->prepare('DELETE FROM comments WHERE comid = ?');
-         $req->execute(array($comid));
-
+         $req->execute(array($id));
          $req->closeCursor();
     }
     
@@ -109,7 +108,6 @@ public function delete($id)
         $infos = SPDO::getInstance();
         $req = $infos->prepare('DELETE FROM TICKET WHERE id = ?');
         $req->execute(array($id));
-        
         $req->closeCursor();
 
     }

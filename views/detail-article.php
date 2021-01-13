@@ -10,9 +10,10 @@ foreach ($articles as $com): ?>
 
 <strong><?=$com->author?></strong> : <?=$com->comment?> - <a class="btn btn-blog pull-right marginBottom10"
     role="button" href="?controller=article-report&id=<?=$article['id']?>">Signaler </a> - <a class="btn btn-blog pull-right marginBottom10" role="button"
-        href="?controller=article-delcomment&id=<?=$article['id']?>">Supprimer</a><br><br>
+        href="?controller=article-delComment&id=<?=$com->comid?>">Supprimer</a><br><br>
 
 <?php endforeach?>
+
 
 
 
