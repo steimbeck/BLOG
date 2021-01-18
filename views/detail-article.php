@@ -1,5 +1,5 @@
 <div>
-    <span><?=$article['title']?></span>
+    <h3><span><?=$article['title']?></span><h3>
     <p><?=$article['content']?> </p>
 </div>
 <h2>Les commentaires de cet article :</h2>
@@ -9,7 +9,7 @@ foreach ($articles as $com): ?>
  <time>Article créer le <?=$com->comdate?></time><br><br>
 
 <strong><?=$com->author?></strong> : <?=$com->comment?> - <a class="btn btn-blog pull-right marginBottom10"
-    role="button" href="?controller=article-report&id=<?=$article['id']?>">Signaler </a> - <a class="btn btn-blog pull-right marginBottom10" role="button"
+    role="button" href="?controller=article-report&id=<?=$com->comid?>">Signaler </a> - <a class="btn btn-blog pull-right marginBottom10" role="button"
         href="?controller=article-delComment&id=<?=$com->comid?>">Supprimer</a><br><br>
 
 <?php endforeach?>

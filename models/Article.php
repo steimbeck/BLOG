@@ -35,21 +35,18 @@ class ArticleManager
     }
     public function create($title, $content)
     {
-            $infos = SPDO::getInstance();
-            $req = $infos->prepare("INSERT INTO ticket (title, content, date)VALUES(?, ?, NOW())");
-            $req->execute(array($title, $content));
-            $req->closeCursor();
-           
-        
-        
+        $infos = SPDO::getInstance();
+        $req = $infos->prepare("INSERT INTO ticket (title, content, date)VALUES(?, ?, NOW())");
+        $req->execute(array($title, $content));
+        $req->closeCursor();
 
     }
     public function update($id, $title, $content)
     {
-        
+
         $infos = SPDO::getInstance();
         $req = $infos->prepare('UPDATE ticket SET title= ?, content=? WHERE id = ?');
-        $req->execute(array( $title, $content, $id));
+        $req->execute(array($title, $content, $id));
         $req->closeCursor();
 
     }
@@ -66,45 +63,19 @@ class ArticleManager
 
             $var = $data;
         }
-
-        $req->closeCursor();
         
+        $req->closeCursor();
+
         return $var;
 
     }
-    public function comment($author, $comment, $ticketid)
-    {   
-        
-        $infos = SPDO::getInstance();
-        $req= $infos->prepare('INSERT INTO comments( author, comment, ticketid, comdate )VALUES(?, ?, ?, NOW())');
-        $req->execute(array( $author, $comment, $ticketid));
-        $req->closeCursor();
-       
-    
-    }
-       public function getComments($id){
-        $id = $_GET['id'];
-        $infos = SPDO::getInstance();
-        $req =$infos-> prepare('SELECT * FROM comments WHERE ticketid = ?');
-        $req->execute(array($id));
-        $data = $req->fetchALL(PDO::FETCH_OBJ);
-        $req->closeCursor();
-        return $data;
-    
-    }
-    public function eraseComment($id){
-         
-        $infos = SPDO::getInstance();
-         $req = $infos->prepare('DELETE FROM comments WHERE comid = ?');
-         $req->execute(array($id));
-         $req->closeCursor();
-    }
     
     
     
-public function delete($id)
-    {   
-        
+
+    public function delete($id)
+    {
+
         $infos = SPDO::getInstance();
         $req = $infos->prepare('DELETE FROM TICKET WHERE id = ?');
         $req->execute(array($id));

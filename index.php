@@ -1,15 +1,18 @@
 <?php
 include_once 'controllers/article.php';
 
+
 $router = 
 [
     "article-list" => listArticles,
     "article-detail" => detailArticle,
-    "article-comment"=>addComment,
+    "article-add" => addArticle,
     "article-del"=> deleteArticle,
-    "article-delComment"=>deleteComment,
     "article-update"=> updateArticle,
     "article-saveUpt"=>saveUpdateArticle,
+    "article-comment"=>addComment,
+    "article-delComment"=>deleteComment,
+    "article-report"=>reportComment
 ];  
 
 
@@ -24,11 +27,10 @@ if (!$controller)
     
     
     
-   
 }
 
 if (!$router[$controller])
- {
+{
     echo "NOT FOUND";
 } else {
         $router[$controller]();

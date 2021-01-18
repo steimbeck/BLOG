@@ -1,5 +1,6 @@
 <?php
 include_once 'models/article.php';
+include_once 'models/Comment.php';
 
 function addArticle()
 {
@@ -15,7 +16,7 @@ function addComment()
         $content = htmlspecialchars($_POST['message']);
         $articleid = $_GET['id'];
 
-        $commentManager = new ArticleManager();
+        $commentManager = new CommentManager();
         $article = $commentManager->comment($author, $content, $articleid);
         include_once 'views/detail-article.php';
 
@@ -29,26 +30,33 @@ function addComment()
 }
 function reportComment()
 {
+    if(isset($_GET['report']) AND !empty($_GET['report'])){
+    $report =(int) $_GET['report'];
+    
     $id = $_GET['id'];
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-
-    $articleManager = new ArticleManager();
-    $article = $articleManager->update($id, $title, $content);
-
+    
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
-
+    $warningManager = new CommentManager();
+    $warningManager-> flagComment($id);
+   
+    echo ' Votre message a bien été reporté';
     
+
+ }else{
+
+      echo 'Veulliez signaler le commentaire';
+    }
+
 
 }
 
 function deleteComment()
 {
     $id = $_GET['id'];
-    $articleManager = new ArticleManager();
-    $article = $articleManager->get((int) $_GET['id']);
-    $delmessage = new ArticleManager();
+    $commentManager = new ArticleManager();
+    $article = $commentManager->get((int) $_GET['id']);
+    $delmessage = new CommentManager();
      $delmessage->eraseComment($id);
     
 }
@@ -75,7 +83,7 @@ function detailArticle()
     $id = $_GET['id'];
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
-    $messagesManager = new ArticleManager();
+    $messagesManager = new CommentManager();
     $articles = $messagesManager->getComments($id);
 
     include_once 'views/detail-article.php';
@@ -106,6 +114,7 @@ function saveUpdateArticle()
     $articleManager = new ArticleManager();
     $article = $articleManager->update($id, $title, $content);
 }
+
 
 function deleteArticle()
 {
