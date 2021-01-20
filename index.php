@@ -12,7 +12,8 @@ $router =
     "article-saveUpt"=>saveUpdateArticle,
     "article-comment"=>addComment,
     "article-delComment"=>deleteComment,
-    "article-report"=>reportComment
+    "article-report"=>reportComment,
+    "article-listReport"=>listWarningComments
 ];  
 
 

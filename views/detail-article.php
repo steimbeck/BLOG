@@ -1,8 +1,11 @@
+
+
+<div class="container">
 <div>
-    <h3><span><?=$article['title']?></span><h3>
+    <h4><span><?=$article['title']?></span><h4>
     <p><?=$article['content']?> </p>
 </div>
-<h2>Les commentaires de cet article :</h2>
+<h3>Les commentaires de cet article :</h3><br>
 <?php
 
 foreach ($articles as $com): ?>
@@ -11,7 +14,6 @@ foreach ($articles as $com): ?>
 <strong><?=$com->author?></strong> : <?=$com->comment?> - <a class="btn btn-blog pull-right marginBottom10"
     role="button" href="?controller=article-report&id=<?=$com->comid?>">Signaler </a> - <a class="btn btn-blog pull-right marginBottom10" role="button"
         href="?controller=article-delComment&id=<?=$com->comid?>">Supprimer</a><br><br>
-
 <?php endforeach?>
 
 
@@ -20,7 +22,8 @@ foreach ($articles as $com): ?>
 
 
 
-<h3>Ajouter un commentaire</h3>
+
+<h4>Ajouter un commentaire</h4><br>
 
 <form class="form-group" action="?controller=article-comment&id=<?=$article['id']?>" method="post">
     <div class="form-group">
@@ -36,6 +39,7 @@ foreach ($articles as $com): ?>
 
     <button type="submit" class="btn btn-info" name="submit_message">Envoyer votre commentaire</button><br />
 </form>
+</div>
 <?php
 if (isset($message)) {
     echo $message;

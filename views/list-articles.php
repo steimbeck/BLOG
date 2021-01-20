@@ -13,10 +13,11 @@
         <div class="row">
             <nav class="navbar navbar-expand fixed-top navbar-dark bg-primary">
                 <div class="nav navbar-nav">
-                    <a class="nav-item nav-link active" href="">Connexion Administrateur <span
-                            class="sr-only">(current)</span></a>
+                   
                     <a class="nav-item nav-link" href="index.php">Retour aux articles</a>
                     <a class="nav-item nav-link" href="?controller=article-add">Créer un article</a>
+                    <a class="nav-item nav-link" href="?controller=article-listReport&id">liste des
+                        commentaires signalés</a>
                 </div>
         </div>
 

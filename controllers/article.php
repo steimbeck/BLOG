@@ -30,8 +30,8 @@ function addComment()
 }
 function reportComment()
 {
-    if(isset($_GET['report']) AND !empty($_GET['report'])){
-    $report =(int) $_GET['report'];
+    //if(isset($_GET['comid']) AND !empty($_GET['comid'])){
+    //$report =(int) $_GET['report'];
     
     $id = $_GET['id'];
     
@@ -40,13 +40,26 @@ function reportComment()
     $warningManager = new CommentManager();
     $warningManager-> flagComment($id);
    
-    echo ' Votre message a bien été reporté';
+    //echo ' Votre message a bien été reporté';
     
 
- }else{
+ //}else{
 
-      echo 'Veulliez signaler le commentaire';
-    }
+      //echo 'Veulliez signaler le commentaire';
+  //  }
+
+
+}
+
+function listWarningComments(){
+
+ $articleManager = new ArticleManager();
+ $articles = $articleManager->list();
+
+$listReportManager = new CommentManager();
+ $comments=$listReportManager->listReportComments();
+
+ include_once "views/list-comments.php";
 
 
 }
@@ -124,6 +137,6 @@ function deleteArticle()
     $articleManager = new ArticleManager();
     $article = $articleManager->delete($id);
 
-    //header('location :index.php');
+    header('location :index.php');
 
 }

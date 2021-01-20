@@ -23,7 +23,7 @@ class ArticleManager
 {
     function list() {
 
-        $req = SPDO::getInstance()->query('Select * FROM ticket ORDER BY id DESC');
+        $req = SPDO::getInstance()->query('SELECT * FROM ticket ORDER BY id DESC');
         while ($row = $req->fetch()) {
 
             $var[] = $row;
@@ -70,9 +70,6 @@ class ArticleManager
 
     }
     
-    
-    
-
     public function delete($id)
     {
 

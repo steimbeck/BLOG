@@ -27,7 +27,7 @@ class CommentManager
 {
     function list() {
 
-        $req = SPDO::getInstance()->query('Select * FROM comments ORDER BY id DESC');
+        $req = SPDO::getInstance()->query(' SELECT * FROM comments ORDER BY id DESC');
         while ($row = $req->fetch()) {
 
             $var[] = $row;
@@ -55,7 +55,7 @@ class CommentManager
     {
         $id = $_GET['id'];
         $infos = SPDO::getInstance();
-        $req = $infos->prepare('SELECT * FROM comments WHERE ticketid = ?');
+        $req = $infos->prepare('SELECT * FROM comments WHERE ticketid = ? ORDER by comid DESC');
         $req->execute(array($id));
         $data = $req->fetchALL(PDO::FETCH_OBJ);
         $req->closeCursor();
@@ -82,4 +82,19 @@ class CommentManager
         $req->closeCursor();
 
     }
+
+    public function  listReportComments(){
+$id = $_GET['id'];
+$infos = SPDO::getInstance();
+$req = $infos->prepare('SELECT * FROM comments WHERE report = ? ORDER by comid DESC');
+$req->execute(array(1));
+$data = $req->fetchALL(PDO::FETCH_OBJ);
+$req->closeCursor();
+return $data;
+       
+    
+}
+
+
+
 }
