@@ -9,18 +9,18 @@
     <h2> les commentaires signalés : </h2>
 <?php
 
-
+ 
 foreach ($comments as $com): ?>
-<?php foreach ($articles as $article):?>
-<h4><strong><?=$article['title'] ?><br><br>
-<time>Article créer le <?=$com->comdate?></time><br><br>
 
-    <h4>
-<strong><?=$com->author?></strong> : <?=$com->comment?>-
+<p>Article numéro :  <?=$com->ticketid?></p> 
+<p>Commentaire numéro : <?=$com->comid?></p>
+
+ <time>Créer le <?=$com->comdate?></time><br><br>
+ <strong><?=$com->author?></strong> : <?=$com->comment?>-
 <a href="?controller=article-delComment&id=<?=$com->comid?>">Supprimer</a><br><br>
 <hr>
     
 <?php endforeach?>
-<?php endforeach?>
+
 </body>
 </html>

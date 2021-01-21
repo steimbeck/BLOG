@@ -75,7 +75,7 @@ class CommentManager
 // signaler un commentaire
     public function flagComment($id)
     {
-
+        
         $infos = SPDO::getInstance();
         $req = $infos->prepare('UPDATE comments SET report = ? WHERE comid = ?');
         $var = $req->execute(array(1, $id));
