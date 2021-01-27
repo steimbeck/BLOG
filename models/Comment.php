@@ -1,5 +1,5 @@
 <?php
-include_once 'tools/pdo.php';
+include_once ROOT_DIRECTORY.'tools/pdo.php';
 
 class Comment
 {

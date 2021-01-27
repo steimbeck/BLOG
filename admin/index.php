@@ -1,19 +1,22 @@
 <?php
+error_reporting(0);
+define('IS_ADMIN',true);
+define('ROOT_DIRECTORY','../');
 include_once '../controllers/article.php';
 
-$admin = define('IS_ADMIN',true);
+
 
 $router = [
-  "article-list" => listArticles,
-  "article-detail" => detailArticle,
-  "article-add" => addArticle,
-  "article-del"=> deleteArticle,
- "article-update"=> updateArticle,
- "article-saveUpt"=>saveUpdateArticle,
-  "article-comment"=>addComment,
-  "article-delComment"=>deleteComment,
-  "article-report"=>reportComment,
-  "article-listReport"=>listWarningComments
+    "article-list" => listArticles,
+    "article-detail" => detailArticle,
+    "article-add" => addArticle,
+    "article-del"=> deleteArticle,
+    "article-update"=> updateArticle,
+    "article-saveUpt"=>saveUpdateArticle,
+    "article-comment"=>addComment,
+    "article-delComment"=>deleteComment,
+    "article-report"=>reportComment,
+    "article-listReport"=>listWarningComments
 ];
 
 $controller = $_GET['controller'];

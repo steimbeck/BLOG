@@ -1,11 +1,12 @@
 <?php
-include_once 'models/article.php';
-include_once 'models/Comment.php';
+ 
+include_once  ROOT_DIRECTORY.'models/article.php';
+include_once ROOT_DIRECTORY.'models/Comment.php';
 
 function addArticle()
 {
 
-    include_once 'views/addArticleForm.php';
+    include_once ROOT_DIRECTORY.'views/addArticleForm.php';
 }
 
 function addComment()
@@ -59,7 +60,7 @@ function listWarningComments(){
 $listReportManager = new CommentManager();
  $comments=$listReportManager->listReportComments();
 
- include_once "views/list-comments.php";
+ include_once ROOT_DIRECTORY."views/list-comments.php";
 
 
 }
@@ -99,7 +100,7 @@ function detailArticle()
     $messagesManager = new CommentManager();
     $articles = $messagesManager->getComments($id);
 
-    include_once 'views/detail-article.php';
+    include_once ROOT_DIRECTORY.'views/detail-article.php';
 }
 
 function listArticles()
@@ -108,7 +109,7 @@ function listArticles()
     $articleManager = new ArticleManager();
     $articles = $articleManager->list();
 
-    include_once 'views/list-articles.php';
+    include_once ROOT_DIRECTORY.'views/list-articles.php';
 }
 
 function updateArticle()
@@ -116,7 +117,7 @@ function updateArticle()
 
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
-    include_once 'views/updateArticleForm.php';
+    include_once ROOT_DIRECTORY.'views/updateArticleForm.php';
 }
 
 function saveUpdateArticle()
