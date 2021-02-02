@@ -4,52 +4,56 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> 
+        <link rel="stylesheet" href="../public/style.css">
+        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
         <!-- <script>
                 src="https://cdn.tiny.cloud/1/ji9gdzunqo0t0g5taic1uefi68xm5or5i521rfqlsgwwudjp/tinymce/5/tinymce.min.js"
                referrerpolicy="origin"></script>  -->
-        <script >
+        <script>
             tinymce.init({
                 selector: '#tinymce'
 
             });
-        </script> 
+        </script>
 
 
 
         <title>BLOG</title>
     </head>
 
+    <body>
 
-    <div class="container" align='center'><br /><br><br>
-
-
-
-        <h3> Création d'un nouvelle article</h3><br />
-
-        <form method="post" action="?controller=article-save&id">
-            <div class="form-group">
-                <label for="article_title"></label>
-                <input class="form-control" type="text" placeholder="Titre" name="article_title"><br />
-            </div><br>
-            <div class="form-group col -md-6">
-                <textarea placeholder="Contenu de l'article" class="form-control col -md-6" id="tinymce"
-                    name="article_content"></textarea><br><br>
-
-                <button class="btn btn-primary" type="submit" name="submit_Add">Envoyer l'article</button><br />
-            </div>
-    </div>
-    </form>
-    <br>
+        <nav>
+            <ul>
+                <li><a class=" lien-nav" href="index.php">Retour aux articles</a></li>
+                <li><a class="lien-nav" href="../views/auteur.php">Information sur l'auteur du blog</a></li>
+                <?php if (IS_ADMIN) { ?> <li><a class="lien-nav" href="?controller=article-add&id">Créer un article</a>
+                </li>
+                <li> <a class="lien-nav" href="?controller=article-listReport&id">liste des
+                        commentaires signalés</a><?php }?></li>
+                <ul>
+        </nav>
 
 
 
-    </div>
+        <h3 class="titre-add"> Création d'un nouvelle article</h3><br />
 
-   
+        <form class="form-add" method="post" action="?controller=article-save&id>
+
+            <label for=" article_title"></label>
+            <input class="input-add" type="text" placeholder="Titre" name="article_title"><br />
+
+
+            <textarea class="textarea-add" placeholder="Contenu de l'article" id="tinymce" name="article_content"
+                cols="75" rows="15"></textarea><br><br>
+
+            <button class="btn-add" type="submit" name="submit_Add">Envoyer l'article</button><br />
+
+
+        </form><br>
+        <span class="signaler"></span>
+
     </body>
 
 </html>

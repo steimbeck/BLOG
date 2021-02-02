@@ -2,18 +2,19 @@
 error_reporting(0);
 define('IS_ADMIN',false);
  define('ROOT_DIRECTORY','');
-
 include_once ROOT_DIRECTORY.'controllers/article.php';
 
-// Désactiver le rapport d'erreurs
-error_reporting(0);
+
 
  $router = 
 [
-"article-list" => listArticles, 
+
+"article-list"=> listArticles, 
 "article-detail" => detailArticle,
 "article-comment"=>addComment,
 "article-report"=>reportComment,
+"article-auteur"=>display,
+
 
 ];  
 

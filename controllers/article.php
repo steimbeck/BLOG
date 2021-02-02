@@ -19,12 +19,12 @@ function addComment()
 
         $commentManager = new CommentManager();
         $article = $commentManager->comment($author, $content, $articleid);
-        include_once 'views/detail-article.php';
+        include_once ROOT_DIRECTORY. 'views/detail-article.php';
 
-        echo "Votre commentaire a bien été enregistré";
+        echo  "Votre commentaire a bien été enregistré";
 
     } else {
-
+         include_once ROOT_DIRECTORY. 'views/detail-article.php';
         echo "Vous devez remplir tous les champs";
     }
 
@@ -40,13 +40,16 @@ function reportComment()
     $article = $articleManager->get((int) $_GET['id']);
     $warningManager = new CommentManager();
     $warningManager-> flagComment($id);
-   
-    echo ' Votre message a bien été reporté';
+     include_once ROOT_DIRECTORY. 'views/detail-article.php';
+    echo ' Ce commentaire a bien été signalé';
     
 
  }else{
-
-      echo 'Veulliez signaler le commentaire';
+        
+    include_once ROOT_DIRECTORY. 'views/detail-article.php';
+    
+        echo 'Veulliez signaler le commentaire';
+      
     }
 
 
@@ -66,13 +69,22 @@ $listReportManager = new CommentManager();
 }
 
 function deleteComment()
-{
+{ if(isset($_GET['id']) AND !empty($_GET['id'])){
     $id = $_GET['id'];
     $commentManager = new ArticleManager();
     $article = $commentManager->get((int) $_GET['id']);
     $delmessage = new CommentManager();
      $delmessage->eraseComment($id);
+    include_once ROOT_DIRECTORY."views/detail-article.php";
+ 
+    echo" Votre commentaire a bien été supprimé";
     
+    
+}else{  
+      include_once ROOT_DIRECTORY."views/detail-article.php";
+       echo' Merci de cliquer sur supprimer';
+
+}
 }
 
 function saveNewArticle()
@@ -83,11 +95,13 @@ function saveNewArticle()
         $article_content = htmlspecialchars($_POST['article_content']);
         $articleManager = new ArticleManager();
         $article = $articleManager->create($_POST['article_title'], $_POST['article_content']);
+        include_once ROOT_DIRECTORY."views/addArticleForm.php";
 
-        $message = 'Tous les champs ont été  remplis';
+        echo  'Votre nouvel article est maintenant ajouté';
     } else {
 
-        $message = 'Vous devez remplir tous les champs';
+         include_once ROOT_DIRECTORY."views/addArticleForm.php";
+        echo  'Vous devez remplir tous les champs';
     }
 }
 
@@ -101,6 +115,7 @@ function detailArticle()
     $articles = $messagesManager->getComments($id);
 
     include_once ROOT_DIRECTORY.'views/detail-article.php';
+   
 }
 
 function listArticles()
@@ -122,22 +137,45 @@ function updateArticle()
 
 function saveUpdateArticle()
 {
+    if(isset($_POST["title"], $_POST['content'])&& !empty($_POST['title'])&& !empty($_POST['content'])){
     $id = $_GET['id'];
     $title = $_POST['title'];
     $content = $_POST['content'];
     $articleManager = new ArticleManager();
     $article = $articleManager->update($id, $title, $content);
+    include_once ROOT_DIRECTORY.'views/updateArticleForm.php';
+    echo'Votre article a bien été mis à jour.';
+
+}else{
+
+    include_once ROOT_DIRECTORY.'views/updateArticleForm.php';
+    echo "Votre article n'a pas été mis à jour.";
+
 }
 
-
+}
 function deleteArticle()
-{
+{  if (isset($_GET['id'])AND !empty($_GET['id'])){
     $id = $_GET['id'];
     $articleManager = new ArticleManager();
     $article = $articleManager->get((int) $_GET['id']);
     $articleManager = new ArticleManager();
     $article = $articleManager->delete($id);
+    include_once ROOT_DIRECTORY.'../admin/index.php';
+  echo " Votre article a été supprimé avec succés";
 
-    header('location :index.php');
+}else{
 
+      include_once ROOT_DIRECTORY.'../admin/index.php';
+     
+     echo "Votre article n'a pas été supprimé";
+}
+
+}
+
+function display(){
+  
+  include_once ROOT_DIRECTORY.'views/auteur.php';
+  $articleManager= new ArticleManager();
+  $article = $articleManager->bioAuthor();
 }
