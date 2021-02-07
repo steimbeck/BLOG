@@ -1,34 +1,86 @@
-<?php 
-include_once('./tools/pdo.php');
+<?php
+include_once ROOT_DIRECTORY.'tools/pdo.php';
 
-class Article {
+
+
+class Article
+{
 
     public $content;
     public $id;
     public $title;
-    public $creationDate;
+    public $date;
 
-    function __construct($id, $content, $title, $creationDate) {
+    public function __construct($id, $content, $title, $date)
+    {
         $this->id = $id;
         $this->content = $content;
         $this->title = $title;
-        $this->creationDate = $creationDate;
+        $this->date = $date;
     }
 
 }
 
-class ArticleManager {
+class ArticleManager
+{
     function list() {
-        return [
-            new Article(1, "Article 1 contenu", "Titre art 1", new DateTime()),
-            new Article(2, "Article 2 contenu", "Titre art 2", new DateTime()),
-            new Article(3, "Article 3 contenu", "Titre art 3", new DateTime()),
-        ];
+
+        $req = SPDO::getInstance()->query('SELECT * FROM ticket ORDER BY id DESC');
+        while ($row = $req->fetch()) {
+
+            $var[] = $row;
+
+        }
+        $req->closeCursor();
+        return $var;
+
     }
-    function create() {}
-    function update() {}
-    function get($id) {
-        return new Article(3, "Article 3 contenu", "Titre art 3", new DateTime());
+    public function create($title, $content)
+    {
+        $infos = SPDO::getInstance();
+        $req = $infos->prepare("INSERT INTO ticket (title, content, date)VALUES(?, ?, NOW())");
+        $req->execute(array($title, $content));
+        $req->closeCursor();
+
     }
-    function delete() {}
+    public function update($id, $title, $content)
+    {
+
+        $infos = SPDO::getInstance();
+        $req = $infos->prepare('UPDATE ticket SET title= ?, content=? WHERE id = ?');
+        $req->execute(array($title, $content, $id));
+        $req->closeCursor();
+
+    }
+    public function get($id)
+    {
+
+        $infos = SPDO::getInstance();
+        $id = $_GET['id'];
+        $req = $infos->prepare("SELECT id, title, content, DATE_FORMAT(date,'%d/%m/%y à %Hh%min%ss') AS date FROM ticket WHERE id = ?");
+
+        $req->execute(array($id));
+
+        while ($data = $req->fetch()) {
+
+            $var = $data;
+        }
+        
+        $req->closeCursor();
+
+        return $var;
+
+    }
+    
+    public function delete($id)
+    {
+
+        $infos = SPDO::getInstance();
+        $req = $infos->prepare('DELETE FROM TICKET WHERE id = ?');
+        $req->execute(array($id));
+        $req->closeCursor();
+
+    }
+
+   
 }
