@@ -82,9 +82,5 @@ class ArticleManager
 
     }
 
-    public function bioAuthor (){
-       
-        include_once ROOT_DIRECTORY.'views/auteur.php';
-     
-    }
+   
 }

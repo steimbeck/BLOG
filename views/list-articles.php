@@ -4,11 +4,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <?php 
+        if ( IS_ADMIN) { ?>
+      
+      <link rel= " stylesheet " href = "../public/style.css " >
+      <?php }else?> <?php { echo " ";
+         } ?>
 
-        <?php if (IS_ADMIN) { ?>
-        <link rel="stylesheet" href="../public/style.css"><?php }?>
+      <?php 
+        if (!IS_ADMIN) { ?>
+      
+      <link rel=" stylesheet " href= " public/style.css ">
+      <?php }else?> <?php  { echo '  ' ;
+        }?>
 
-        <link rel="stylesheet" href="public/style.css">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Slab:wght@500&family=Lora:ital@1&display=swap');
         </style>
@@ -16,6 +25,7 @@
 
         <title>BLOG</title>
     </head>
+
 
     <body>
 
@@ -49,7 +59,7 @@ foreach($articles as $article):?>
                 <span class="t-article"><?=$article['title'] ?></span>
             </a></h3><br>
 
-        <article><?=$article['content'] ?></article><br><br>
+        <article class=""><?=$article['content'] ?></article><br><br>
 
         <p class="edition">Article edité le <?=$article['date']?></p>
 
@@ -59,9 +69,13 @@ foreach($articles as $article):?>
         <button class="btn-supprimer" type="submit" name="submit-del"><a class="lien-supprimer"
                 href="?controller=article-del&id=<?=$article['id']?>">Supprimer</a></button><?php }?>
         <hr />
+       
+<?php endforeach ?>
+  
 
 
-        <?php endforeach ?>
+
+        
 
     </body>
 

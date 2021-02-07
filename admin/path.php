@@ -1,4 +1,2 @@
 <?php
-  echo crypt('choco');?>
-    
-
+ echo realpath('path.php');?>

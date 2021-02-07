@@ -7,32 +7,49 @@
 }
 
 body {
-	background: rgb(57, 176, 197);
+	background: #39b0c5;
 	font-family: "Josefin Slab", serif;
 	font-weight: 600;
 }
 nav {
 	height: 80px;
+	margin-top: 0px;
 	width: 100%;
-	bottom: 530px;
 	background: rgba(9, 65, 97, 1);
-	position: fixed;
+	
+	z-index: 6;
 }
 ul {
 	width: 100%;
+	padding-top: 10px;
 	text-align: center;
+	margin-bottom: 50px;
+	
 }
+
 nav ul li {
 	display: inline-block;
-	line-height: 70px;
-	margin: 0 10px;
+	line-height: 80px;
+	margin: 0 5px;
+  
+  
+	
+	
+}
+
+nav ul li:hover{
+
+text-decoration:  3px underline rgb(141, 69, 69);
+
+
 }
 
 .lien-nav {
 	font-family: "Josefin Slab", serif;
-	line-height: 70px;
+	line-height: 80px;
 	color: rgb(231, 222, 222);
 	text-decoration: none;
+	
 	margin: 0 10px;
 	font-size: 17px;
 	font-weight: 600;
@@ -41,8 +58,9 @@ nav ul li {
 h1 {
 	font-family: "Cinzel", serif;
 	text-align: center;
+	margin-top: 90px;
 	color: rgba(0, 40, 63, 1);
-	font-weight: 600;
+	
 }
 
 h2 {
@@ -54,9 +72,11 @@ h2 {
 }
 
 .titre-article {
+	margin-top: 35px;
 	margin-left: 50px;
-	padding-top: 15px;
+	padding-top: 20px;
 	font-size: 23px;
+	color: black;
 }
 .signaler {
 	font-size: 20px;
@@ -79,11 +99,14 @@ article {
 	font-family: "Josefin Slab", serif;
 	font-size: 23px;
 	margin-left: 50px;
+	margin-top: 20px;
+	padding: 5px;
 }
 .edition {
 	font-size: 18px;
 	color: rgb(15, 14, 15);
 	margin-bottom: 10px;
+	margin-left: 50px;
 }
 
 .btn-modif {
@@ -141,7 +164,7 @@ article {
 }
 
 .titre-update {
-	margin-top: 20px;
+	margin-top: 50px;
 }
 
 .form-update {
@@ -222,7 +245,12 @@ article {
 	-ms-border-radius: 12px;
 	-o-border-radius: 12px;
 }
+.signaler{
 
+ color : red;
+ background: #000;
+
+}
 .btn-add {
 	font-weight: 600;
 	font-size: 17px;
@@ -335,19 +363,21 @@ article {
 }
 
 .one-content {
-	font-weight: 400;
+	font-weight: 600;
+	font-size :23px;
 	padding-bottom: 15px;
 }
 
 .titre-comment {
 	margin-top: 15px;
+	font-size:30px;
 	color: rgb(14, 34, 212);
 	text-align: left;
 	font-style: italic;
 }
 .date-comment {
 	color: rgb(2, 18, 31);
-	font-size: 18px;
+	font-size: 20px;
 	margin-bottom: 10px;
 }
 
@@ -361,7 +391,7 @@ article {
 
 .comment {
 	font-weight: 800;
-	font-size: 20px;
+	font-size: 23px;
 	padding-bottom: 10px;
 	color: black;
 }
@@ -414,7 +444,7 @@ article {
 .titre-addComment {
 	margin-left: 140px;
 	margin-bottom: 10px;
-	font-size: 21px;
+	font-size: 23px;
 }
 
 .form-comment {
@@ -465,4 +495,218 @@ article {
 .btn-sendComment:active {
 	box-shadow: 0 0 #047e3b;
 	top: 6px;
+}
+
+
+
+
+@media screen and (max-width:875px){
+
+nav{
+
+	height :70%;
+	flex-direction: column;
+}
+article{
+
+	font-size: 20px;
+}
+nav ul li{
+
+	display :block;
+	
+	
+	
+
+}
+.lien-nav{
+ padding-bottom: 15px;
+ color: rgb(222, 221, 230);
+ font-size: 25px;
+ font-weight: 800;
+ 
+	
+}
+
+h1{
+
+	margin-top: 20%;
+}
+
+.titre-update{
+
+	margin-top: 26%px;
+}
+
+.form-update{
+
+	margin-left: 30px;
+}
+.titre-auteur{
+    font-size:40px;
+	margin-top: 26%px;
+
+
+}
+.biographie{
+	font-size:16px;
+	margin-left:10px;
+	
+}
+.titre-add{
+
+	margin-top: 20%;
+}
+.form-add{
+
+	margin-left: 25px;
+}
+.titre-report{
+
+	margin-top: 22%;
+	margin-bottom:10% ;
+	margin-left: 10%;
+}
+.article-report{
+margin-left: 10px;
+
+}
+
+.one-article{
+ 
+	 margin-top: 170px;
+	 margin-left: 10px;
+}
+.titre-addComment {
+
+margin-left: 20px;
+
+}
+.form-comment{
+
+	margin-left: 40px;
+}
+.textarea-comment{
+
+	width: 90%;
+}
+
+}
+
+@media screen and (max-width:660px){
+
+.biographie{
+
+	font-size :14px;
+	margin-top:60px;
+	
+
+
+}
+
+}
+
+
+@media screen and (max-width:595px){
+
+	.btn-modif{
+
+		margin-left :20px;
+	}
+}
+@media screen and (max-width:500px){
+
+.titre-comment{
+
+	font-size:17px;
+}
+	.btn-signaler{
+
+		margin-left: 5px;
+	}
+
+	.comment{
+
+		margin-left: 0px;
+	}
+	.form-comment{
+
+		margin-left: 5px;;
+	}
+	.textarea-comment{
+
+		width: 88%;
+	}
+}
+
+
+
+
+@media screen and (max-width:410px){
+
+	.btn-report{
+
+		padding: 10px 20px;
+		margin-left: 5px;
+	}
+
+
+}
+
+@media screen and (max-width:398px){
+
+.lien-nav{
+
+	 font-size:20px;
+	 font-weight: bold;
+	 
+	 
+
+}
+.titre-article{
+ 
+	font-size: 20px;
+	
+	
+}
+article{
+font-size: 17px;
+
+}
+.btn-modif{
+
+		padding: 10px 30px;
+		
+	}
+	.btn-supprimer{
+
+		padding: 10px 28px;
+		margin-left: 20px;
+	}
+	.titre-add{
+
+		font-size :16px;
+	}
+
+	.input-add{
+
+		padding :8px 15px;
+		font-size: 14px;
+	}
+	.btn-add{
+
+		font-weight: 500;
+		padding: 13px 20px;
+	}
+
+}
+
+@media screen and (max-width:367px){
+
+ .titre-article{
+
+	font-size : 16px
+ }
+
+
 }

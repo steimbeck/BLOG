@@ -42,11 +42,12 @@
         <form class="form-add" method="post" action="?controller=article-save&id>
 
             <label for=" article_title"></label>
-            <input class="input-add" type="text" placeholder="Titre" name="article_title"><br />
+            <input class="input-add" type="text" placeholder="Titre" name="article_title"
+                value="<?=$_POST['article_title'] ?? "" ?>"><br />
 
 
             <textarea class="textarea-add" placeholder="Contenu de l'article" id="tinymce" name="article_content"
-                cols="75" rows="15"></textarea><br><br>
+                cols="75" rows="15"> <?=$_POST['article_content'] ?? ""?></textarea><br><br>
 
             <button class="btn-add" type="submit" name="submit_Add">Envoyer l'article</button><br />
 

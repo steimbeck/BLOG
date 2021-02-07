@@ -21,11 +21,13 @@ function addComment()
         $article = $commentManager->comment($author, $content, $articleid);
         include_once ROOT_DIRECTORY. 'views/detail-article.php';
 
-        echo  "Votre commentaire a bien été enregistré";
+                echo  "Votre commentaire a bien été enregistré";
+        
 
     } else {
-         include_once ROOT_DIRECTORY. 'views/detail-article.php';
-        echo "Vous devez remplir tous les champs";
+        include_once ROOT_DIRECTORY. 'views/detail-article.php';
+            echo "Vous devez remplir tous les champs";
+       
     }
 
 }
@@ -161,14 +163,19 @@ function deleteArticle()
     $article = $articleManager->get((int) $_GET['id']);
     $articleManager = new ArticleManager();
     $article = $articleManager->delete($id);
-    include_once ROOT_DIRECTORY.'../admin/index.php';
-  echo " Votre article a été supprimé avec succés";
+    
+  //echo " L'article a été supprimé avec succés";
+ 
+  $_SESSION['message']= " L'article a été supprimé avec succés";
+ 
+ header('location:../admin/index.php');
 
+ 
 }else{
 
-      include_once ROOT_DIRECTORY.'../admin/index.php';
+      
      
-     echo "Votre article n'a pas été supprimé";
+     echo " l'article n'a pas été supprimé";
 }
 
 }
@@ -176,6 +183,5 @@ function deleteArticle()
 function display(){
   
   include_once ROOT_DIRECTORY.'views/auteur.php';
-  $articleManager= new ArticleManager();
-  $article = $articleManager->bioAuthor();
+  
 }
