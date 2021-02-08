@@ -3,6 +3,7 @@
 include_once  ROOT_DIRECTORY.'models/article.php';
 include_once ROOT_DIRECTORY.'models/Comment.php';
 
+//Affiche  le formulaire
 function addArticle()
 {
 
@@ -31,6 +32,8 @@ function addComment()
     }
 
 }
+//Signaler un commentaire
+
 function reportComment()
 {
     if(isset($_GET['id']) AND !empty($_GET['id'])){
@@ -56,7 +59,7 @@ function reportComment()
 
 
 }
-
+//Affiche tous les commentaires signalés
 function listWarningComments(){
 
  $articleManager = new ArticleManager();
@@ -88,7 +91,7 @@ function deleteComment()
 
 }
 }
-
+//ajout d'un nouvelle article
 function saveNewArticle()
 {
 
@@ -106,7 +109,7 @@ function saveNewArticle()
         echo  'Vous devez remplir tous les champs';
     }
 }
-
+//affiche la liste des commentaires
 function detailArticle()
 {
 
@@ -119,7 +122,7 @@ function detailArticle()
     include_once ROOT_DIRECTORY.'views/detail-article.php';
    
 }
-
+//Affiche la liste des articles
 function listArticles()
 {
 
@@ -164,9 +167,9 @@ function deleteArticle()
     $articleManager = new ArticleManager();
     $article = $articleManager->delete($id);
     
-  //echo " L'article a été supprimé avec succés";
+  echo " L'article a été supprimé avec succés";
  
-  $_SESSION['message']= " L'article a été supprimé avec succés";
+
  
  header('location:../admin/index.php');
 
@@ -179,7 +182,7 @@ function deleteArticle()
 }
 
 }
-
+//Affiche la page biographie de l'auteur(auteur.php)
 function display(){
   
   include_once ROOT_DIRECTORY.'views/auteur.php';

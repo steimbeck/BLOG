@@ -23,6 +23,7 @@ class Article
 
 class ArticleManager
 {
+    //Affiche les articles
     function list() {
 
         $req = SPDO::getInstance()->query('SELECT * FROM ticket ORDER BY id DESC');
@@ -35,6 +36,7 @@ class ArticleManager
         return $var;
 
     }
+    //Création d'un article
     public function create($title, $content)
     {
         $infos = SPDO::getInstance();
@@ -52,6 +54,7 @@ class ArticleManager
         $req->closeCursor();
 
     }
+    //Affiche un article
     public function get($id)
     {
 

@@ -6,14 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <?php 
         if ( IS_ADMIN) { ?>
-      
+      //css admin
       <link rel= " stylesheet " href = "../public/style.css " >
       <?php }else?> <?php { echo " ";
          } ?>
 
       <?php 
         if (!IS_ADMIN) { ?>
-      
+      //css user
       <link rel=" stylesheet " href= " public/style.css ">
       <?php }else?> <?php  { echo '  ' ;
         }?>
